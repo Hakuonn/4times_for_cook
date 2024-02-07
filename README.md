@@ -69,3 +69,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 # 4times_for_cook
+
+目前我有兩頁：IndexPage、RecipePage
+
+IndexPage 首頁：登入、註冊、訪客登入
+RecipePage 食譜：食譜頁面
