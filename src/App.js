@@ -21,8 +21,8 @@ const sampleRecipe = {
 function App() {
   return (
     <div className="App">
-      {/* <IndexPage/> */}
-      <RecipePage recipe={sampleRecipe} />
+      <IndexPage/>
+      {/* <RecipePage recipe={sampleRecipe} /> */}
     </div>
   );
 }

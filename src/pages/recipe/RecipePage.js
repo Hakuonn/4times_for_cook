@@ -70,6 +70,7 @@ const RecipePage = ({ recipe }) => {
 
       <div>
         <Title level={1} style={{ textAlign: 'left'}}>步驟</Title>
+        {/* 這邊只要丟入步驟裡的說明就好，步驟無須添加(index不要亂動!!) */}
         <ol style={{ backgroundColor: 'white', borderRadius: 50}}>
           {steps.map((step, index) => (
             <>
