@@ -2,6 +2,7 @@ import './App.css';
 
 import IndexPage from './pages/index/IndexPage';
 import RecipePage from './pages/recipe/RecipePage';
+import SearchPage from './pages/search/SearchPage';
 
 const sampleRecipe = {
   name: '美味三色豆',
@@ -21,8 +22,9 @@ const sampleRecipe = {
 function App() {
   return (
     <div className="App">
-      <IndexPage/>
+      {/* <IndexPage/> */}
       {/* <RecipePage recipe={sampleRecipe} /> */}
+      <SearchPage/>
     </div>
   );
 }
