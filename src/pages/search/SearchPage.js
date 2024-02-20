@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Tag, Input, Button, Row, Col } from 'antd';
+import TagSelector from '../../components/search/TagSelector';
 import './SearchPage.css';
 import { SearchOutlined } from '@ant-design/icons';
 const { CheckableTag } = Tag;
@@ -30,6 +31,10 @@ function SearchPage() {
     console.log(searchData);
   };
 
+  const timeTags = ['15分鐘或更少', '30分鐘或更少', '60分鐘或更少', '60分鐘以上'];
+  const cuisineTags = ['日式', '中式', '韓式', '西班牙', '義式', '德式', '墨西哥'];
+  const healthTags = ['不含酒精', '低卡路里', '低蛋白', '高蛋白', '無麩質', '低鈉', '低膽固醇'];
+
   return (
     <div className="search-container">
       <div className="search-content">
@@ -49,125 +54,20 @@ function SearchPage() {
           <Row gutter={[16, 16]}>
             <Col span={8}>
               <p>製作時間</p>
-              <CheckableTag
-                checked={selectedTags.includes('15分鐘或更少')}
-                onChange={checked => handleTagChange('15分鐘或更少', checked)}
-              >
-                15分鐘或更少
-              </CheckableTag>
-              <CheckableTag
-                checked={selectedTags.includes('30分鐘或更少')}
-                onChange={checked => handleTagChange('30分鐘或更少', checked)}
-              >
-                30分鐘或更少
-              </CheckableTag>
-              <CheckableTag
-                checked={selectedTags.includes('60分鐘或更少')}
-                onChange={checked => handleTagChange('60分鐘或更少', checked)}
-              >
-                60分鐘或更少
-              </CheckableTag>
-              <CheckableTag
-                checked={selectedTags.includes('60分鐘以上')}
-                onChange={checked => handleTagChange('60分鐘以上', checked)}
-              >
-                60分鐘以上
-              </CheckableTag>
+              <TagSelector tags={timeTags} selectedTags={selectedTags} handleTagChange={handleTagChange} />
             </Col>
             <Col span={8}>
               <p>各國料理</p>
-              <CheckableTag
-                checked={selectedTags.includes('日式')}
-                onChange={checked => handleTagChange('日式', checked)}
-              >
-                日式
-              </CheckableTag>
-              <CheckableTag
-                checked={selectedTags.includes('中式')}
-                onChange={checked => handleTagChange('中式', checked)}
-              >
-                中式
-              </CheckableTag>
-              <CheckableTag
-                checked={selectedTags.includes('韓式')}
-                onChange={checked => handleTagChange('韓式', checked)}
-              >
-                韓式
-              </CheckableTag>
-              <CheckableTag
-                checked={selectedTags.includes('西班牙')}
-                onChange={checked => handleTagChange('西班牙', checked)}
-              >
-                西班牙
-              </CheckableTag>
-              <CheckableTag
-                checked={selectedTags.includes('義式')}
-                onChange={checked => handleTagChange('義式', checked)}
-              >
-                義式
-              </CheckableTag>
-              <CheckableTag
-                checked={selectedTags.includes('德式')}
-                onChange={checked => handleTagChange('德式', checked)}
-              >
-                德式
-              </CheckableTag>
-              <CheckableTag
-                checked={selectedTags.includes('墨西哥')}
-                onChange={checked => handleTagChange('墨西哥', checked)}
-              >
-                墨西哥
-              </CheckableTag>
+              <TagSelector tags={cuisineTags} selectedTags={selectedTags} handleTagChange={handleTagChange} />
             </Col>
             <Col span={8}>
               <p>健康選擇</p>
-              <CheckableTag
-                checked={selectedTags.includes('不含酒精')}
-                onChange={checked => handleTagChange('不含酒精', checked)}
-              >
-                不含酒精
-              </CheckableTag>
-              <CheckableTag
-                checked={selectedTags.includes('低卡路里')}
-                onChange={checked => handleTagChange('低卡路里', checked)}
-              >
-                低卡路里
-              </CheckableTag>
-              <CheckableTag
-                checked={selectedTags.includes('低蛋白')}
-                onChange={checked => handleTagChange('低蛋白', checked)}
-              >
-                低蛋白
-              </CheckableTag>
-              <CheckableTag
-                checked={selectedTags.includes('高蛋白')}
-                onChange={checked => handleTagChange('高蛋白', checked)}
-              >
-                高蛋白
-              </CheckableTag>
-              <CheckableTag
-                checked={selectedTags.includes('無麩質')}
-                onChange={checked => handleTagChange('無麩質', checked)}
-              >
-                無麩質
-              </CheckableTag>
-              <CheckableTag
-                checked={selectedTags.includes('低鈉')}
-                onChange={checked => handleTagChange('低鈉', checked)}
-              >
-                低鈉
-              </CheckableTag>
-              <CheckableTag
-                checked={selectedTags.includes('低膽固醇')}
-                onChange={checked => handleTagChange('低膽固醇', checked)}
-              >
-                低膽固醇
-              </CheckableTag>
+              <TagSelector tags={healthTags} selectedTags={selectedTags} handleTagChange={handleTagChange} />
             </Col>
           </Row>
         </div>
         <div className="search-button">
-          <Button type="primary" onClick={handleSearch}>搜索</Button>
+          <Button shape='round' size='large' onClick={handleSearch}>搜索</Button>
         </div>
       </div>
     </div>
