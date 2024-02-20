@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Tag, Input, Button, Row, Col } from 'antd';
+import { Input, Button, Row, Col } from 'antd';
 import TagSelector from '../../components/search/TagSelector';
 import './SearchPage.css';
 import { SearchOutlined } from '@ant-design/icons';
-const { CheckableTag } = Tag;
+
 
 /**
  * 搜尋頁面，條件式搜尋
