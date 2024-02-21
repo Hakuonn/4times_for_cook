@@ -74,3 +74,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 IndexPage 首頁：登入、註冊、訪客登入
 RecipePage 食譜：食譜頁面
+SearchPage 搜尋：條件式搜尋
