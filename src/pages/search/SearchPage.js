@@ -43,8 +43,8 @@ function SearchPage() {
             placeholder="輸入你想吃的類型或是食物名稱" 
             size='large' 
             prefix={<SearchOutlined />} 
-            onChange={handleInputChange} // 监听用户输入变化
-            value={inputValue} // 将输入的值绑定到输入框
+            onChange={handleInputChange}
+            value={inputValue}
           />
         </div>
         <div className="slogan">
