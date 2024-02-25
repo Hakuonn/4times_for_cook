@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Input, Button, Row, Col } from 'antd';
+import Axios from '../../components/Axios'
 import TagSelector from '../../components/search/TagSelector';
 import './SearchPage.css';
 import { SearchOutlined } from '@ant-design/icons';

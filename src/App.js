@@ -23,8 +23,8 @@ function App() {
   return (
     <div className="App">
       {/* <IndexPage/> */}
-      {/* <RecipePage recipe={sampleRecipe} /> */}
-      <SearchPage/>
+      <RecipePage recipe={sampleRecipe} />
+      {/* <SearchPage/> */}
     </div>
   );
 }
