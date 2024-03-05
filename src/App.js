@@ -1,30 +1,39 @@
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-
+import Axios from './components/Axios';
 import IndexPage from './pages/index/IndexPage';
 import RecipePage from './pages/recipe/RecipePage';
 import SearchPage from './pages/search/SearchPage';
 
-const sampleRecipe = {
-  name: '美味三色豆',
-  image: 'https://fuckyou.com/fuckimage',
-  tags: ['簡單', '健康', '快速'],
-  introduction: '這是一個美味食譜的介紹。',
-  ingredients: ['青豆', '玉米', '紅蘿蔔'],
-  nutrition: {
-    熱量: '200kcal',
-    脂肪: '10g',
-    蛋白質: '20g',
-    納: '50mg',
-  },
-  steps: ['準備食材', '放入油，待油燒熱','放入三色豆翻炒','調味後，完成！'],
-};
 
 function App() {
+  const [recipeData, setRecipeData] = useState(null);
+  // console.log(recipeData)
+
+  const getRecipeData = () => {
+    const action = '/Recipe/example_output/';
+    Axios().get(action)
+      .then((res) => {
+        setRecipeData(res.data[0]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getRecipeData();
+  }, []);
   return (
     <div className="App">
-      {/* <IndexPage/> */}
-      <RecipePage recipe={sampleRecipe} />
-      {/* <SearchPage/> */}
+      <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<IndexPage/>} exact/>
+        <Route path='/Recipe' element={<RecipePage recipe={recipeData}/>}  exact/>
+        <Route path='/Search' element={<SearchPage/>} exact/>
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }

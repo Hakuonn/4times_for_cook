@@ -1,88 +1,70 @@
-import React from 'react';
-import { Row, Col, Card, Typography, Tag, Image, Divider } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Row, Col, Card, Typography, Divider } from 'antd';
 import logo_540 from '../../images/logo_540.png';
 
-const { Title, Paragraph, Text } = Typography;
+const { Title, Paragraph } = Typography;
 
-/**
- * 食譜頁面
- * @param {*} param0 
- * @returns 
- */
 const RecipePage = ({ recipe }) => {
-  const {
-    name,
-    image,
-    tags,
-    introduction,
-    ingredients,
-    nutrition,
-    steps,
-  } = recipe;
+  const [data, setData] = useState(null);
+  console.log(data)
+
+  useEffect(() => {
+    if (recipe) {
+      const modifiedRecipe = { 
+        ...recipe, 
+        nutrition: JSON.parse(recipe.attributes.nutrition.replace(/'/g, '"')), 
+        ingredients: JSON.parse(recipe.ingredients.replace(/'/g, '"')), 
+        steps: JSON.parse(recipe.steps.replace(/'/g, '"')), 
+      };
+      setData(modifiedRecipe);
+    }
+  }, [recipe]);
 
   return (
-    <div style={{ background: '#f2f2f2', minHeight: '100vh', padding: 20 }}>
-      {/* 這裡等到搜尋製作完畢，即可放上 */}
+    <div style={{  background: '#f2f2f2', minHeight: '100vh', padding: 20, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    {data && (
       <Row gutter={16}>
-        <Col xs={24} md={12}>
-          {/* 食譜主圖像 如果顯示不出來的話，會顯示本平台logo */}
-          <Image src={image} preview={false} fallback={logo_540} />
-        </Col>
-        <Col xs={24} md={12}>
-          <Card style={{ borderRadius: '10px', textAlign: 'left', padding: '16px'}}>
-            <Title>{name}</Title>
-            {tags && (
+        <Card style={{ borderRadius: '10px', textAlign: 'left', padding: '20px', marginRight: 60 }}>
+          <Title>{data.name}</Title>
+          <Paragraph>{data.description}</Paragraph>
+          <Divider />
+          <Row gutter={16}>
+            <Col xs={24} md={12}>
               <div>
-                tags：
-                {tags.map(tag => (
-                  <Tag key={tag}>{tag}</Tag>
-                ))}
-              </div>
-            )}
-            <Paragraph>{introduction}</Paragraph>
-            <Divider/>
-
-            <Row gutter={[200, 16]}>
-              <Col>
-                <Title level={3}>所需材料</Title>
+                <Title level={3}>準備材料</Title>
                 <ul>
-                  {ingredients.map((ingredient, index) => (
+                  {data.ingredients.map((ingredient, index) => (
                     <li key={index}>{ingredient}</li>
                   ))}
                 </ul>
-              </Col>
-              <Col>
-                <Title level={3}>營養成分</Title>
+              </div>                
+            </Col>
+            <Col xs={24} md={12}>
+              <div>
+                <Title level={3}>營養資訊</Title>
                 <ul>
-                  {Object.entries(nutrition).map(([key, value]) => (
-                    <li key={key}>
-                      {key}: {value}
-                    </li>
+                  {data.nutrition.map((value, index) => (
+                    <li key={index}>{index}: {value}</li>
                   ))}
                 </ul>
-              </Col>
-            </Row>
-          </Card>
-        </Col>
+              </div>                
+            </Col>
+          </Row>
+
+          <div>
+            <Title level={3}>步驟</Title>
+            <ol>
+              {data.steps.map((step, index) => (
+                <div key={index}>
+                  <li>{step.trim()}</li>
+                  {index !== data.steps.length - 1 && <Divider />}
+                </div>
+              ))}
+            </ol>
+          </div>
+        </Card>
       </Row>
-
-      <Divider/>
-
-      <div>
-        <Title level={1} style={{ textAlign: 'left'}}>步驟</Title>
-        {/* 這邊只要丟入步驟裡的說明就好，步驟無須添加(index不要亂動!!) */}
-        <ol style={{ backgroundColor: 'white', borderRadius: 50}}>
-          {steps.map((step, index) => (
-            <>
-              <li key={index} style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
-                <Text strong style={{ flexBasis: '30%', fontSize: 120 }}>{index + 1}</Text>
-                <Text style={{ flexBasis: '70%', fontSize: 30, textAlign:'left' }}>{step}</Text>
-              </li>
-              {index !== steps.length - 1 && <Divider />}
-            </>
-          ))}
-        </ol>
-      </div>
+    )}
     </div>
   );
 };
