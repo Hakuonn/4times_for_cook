@@ -13,7 +13,7 @@ import logo_and_solgan_540 from '../../images/logo_and_slogan_540_white.png';
  */
 const IndexPage = () => {
   return (
-    <Row className="index-page-container" justify="center" align="middle">
+    <div className="index-page-container" justify="center" align="middle">
 
       <Row>
         <Col xs={24} md={24}>
@@ -42,7 +42,7 @@ const IndexPage = () => {
         </Col>
       </Row>      
         
-    </Row>
+    </div>
   );
 };
 
