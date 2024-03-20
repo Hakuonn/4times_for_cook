@@ -12,7 +12,7 @@ function App() {
   const [recipeData, setRecipeData] = useState(null);
 
   const getRecipeData = () => {
-    const action = '/Recipe/example_output/';
+    const action = '/Recipe/example_output/'; ///Recipe/get_result/
     Axios().get(action)
       .then((res) => {
         setRecipeData(res.data[0]);
