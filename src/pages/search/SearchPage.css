@@ -13,3 +13,12 @@
   padding: 20px;
   border-radius: 10px;
 }
+
+.tagName{
+  font-size: 16px;
+}
+
+.search-button{
+  margin-top: 2%;
+  margin-bottom: 2%;
+}

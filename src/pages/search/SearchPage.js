@@ -1,28 +1,29 @@
 import React, { useState } from 'react';
-import { Input, Button, Row, Col } from 'antd';
-import Axios from '../../components/Axios'
+import { Input, Button, Row, Col, Divider } from 'antd';
+import Axios from '../../components/Axios';
 import TagSelector from '../../components/search/TagSelector';
-import './SearchPage.css';
+import SearchResult from '../../components/search/SearchResult'; // 引入搜尋結果組件
 import { SearchOutlined } from '@ant-design/icons';
+import './SearchPage.css';
+import './SearchResultPage.css';
 
-
-/**
- * 搜尋頁面，條件式搜尋
- * @returns 
- */
 function SearchPage() {
   const [inputValue, setInputValue] = useState('');
   const [selectedTags, setSelectedTags] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [showSearchResult, setShowSearchResult] = useState(false); // 新增狀態來控制是否顯示搜尋結果
 
   const handleInputChange = e => {
     setInputValue(e.target.value);
   };
+
   const handleTagChange = (tag, checked) => {
     const nextSelectedTags = checked ?
       [...selectedTags, tag] :
       selectedTags.filter(t => t !== tag);
     setSelectedTags(nextSelectedTags);
   };
+
   const handleSearch = () => {
     // 到時候用Axios
     const searchData = {
@@ -30,6 +31,16 @@ function SearchPage() {
       userInput: inputValue
     };
     console.log(searchData);
+    setShowSearchResult(true); // 當搜尋鍵被點擊時設置狀態為true，顯示搜尋結果
+
+    //下面是假設點擊後的結果：
+    const results = [
+      { title: '青草三色豆', description: '好吃ㄉ三色豆，小朋友都很愛。好吃ㄉ三色豆，小朋友都很愛。好吃ㄉ三色豆，小朋友都很愛。好吃ㄉ三色豆，小朋友都很愛。好吃ㄉ三色豆，小朋友都很愛。好吃ㄉ三色豆，小朋友都很愛。好吃ㄉ三色豆，小朋友都很愛。好吃ㄉ三色豆，小朋友都很愛。好吃ㄉ三色豆，小朋友都很愛。好吃ㄉ三色豆，小朋友都很愛。好吃ㄉ三色豆，小朋友都很愛。' },
+      { title: '砸草三色豆', description: '好吃ㄉ三色豆，小朋友都很愛。好吃ㄉ三色豆，小朋友都很愛。好吃ㄉ三色豆，小朋友都很愛。' },
+      { title: '肌肉三色豆', description: '好吃ㄉ三色豆，小朋友都很愛。好吃ㄉ三色豆，小朋友都很愛。好吃ㄉ三色豆，小朋友都很愛。好吃ㄉ三色豆，小朋友都很愛。好吃ㄉ三色豆，小朋友都很愛。好吃ㄉ三色豆，小朋友都很愛。' },
+    ];
+    setSearchResults(results);
+
   };
 
   const timeTags = ['15分鐘或更少', '30分鐘或更少', '60分鐘或更少', '60分鐘以上'];
@@ -40,7 +51,7 @@ function SearchPage() {
     <div className="search-container">
       <div className="search-content">
         <div className="search-bar">
-        <Input 
+          <Input 
             placeholder="輸入你想吃的類型或是食物名稱" 
             size='large' 
             prefix={<SearchOutlined />} 
@@ -54,15 +65,15 @@ function SearchPage() {
         <div className="conditions">
           <Row gutter={[16, 16]}>
             <Col span={8}>
-              <p>製作時間</p>
+              <p className='tagName'>製作時間</p>
               <TagSelector tags={timeTags} selectedTags={selectedTags} handleTagChange={handleTagChange} />
             </Col>
             <Col span={8}>
-              <p>各國料理</p>
+              <p className='tagName'>各國料理</p>
               <TagSelector tags={cuisineTags} selectedTags={selectedTags} handleTagChange={handleTagChange} />
             </Col>
             <Col span={8}>
-              <p>健康選擇</p>
+              <p className='tagName'>健康選擇</p>
               <TagSelector tags={healthTags} selectedTags={selectedTags} handleTagChange={handleTagChange} />
             </Col>
           </Row>
@@ -70,6 +81,9 @@ function SearchPage() {
         <div className="search-button">
           <Button shape='round' size='large' onClick={handleSearch}>搜索</Button>
         </div>
+        
+        {/* 顯示搜尋結果 */}
+        {showSearchResult && <SearchResult searchResults={searchResults}/>}
       </div>
     </div>
   );

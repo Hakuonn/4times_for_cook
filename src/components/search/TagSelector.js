@@ -18,6 +18,7 @@ function TagSelector({ tags, selectedTags, handleTagChange }) {
           key={tag}
           checked={selectedTags.includes(tag)}
           onChange={checked => handleTagChange(tag, checked)}
+          style={{fontSize: '14px'}}
         >
           {tag}
         </CheckableTag>

@@ -45,6 +45,9 @@ const Navbar = () => {
           <Menu.Item key="8" icon={<LoginOutlined />} onClick={()=>{navgate("/Search")}}>
             搜尋
           </Menu.Item>
+          <Menu.Item key="9" icon={<LoginOutlined />} onClick={()=>{navgate("/SearchResult")}}>
+            搜尋結果
+          </Menu.Item>
         </Menu>
       </Col>
     </Row>

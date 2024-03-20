@@ -12,7 +12,7 @@ function Axios(){
   let jwt = `Bearer ${(window.localStorage.getItem('jwt'))}`
   const res = axios.create(
     {
-      baseURL: 'https://5b5b-1-174-142-131.ngrok-free.app/',
+      baseURL: 'https://de17-1-174-140-47.ngrok-free.app/',
       timeout:10000,
       headers:{
         'ngrok-skip-browser-warning':'123',
