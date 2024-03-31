@@ -14,12 +14,12 @@ const Navbar = () => {
   return (
     <Row justify="space-between">
       <Col>
-        <div style={{ color: 'white', fontSize: '24px' }}>
-          <Image width={200} preview={false} src={logo} />
+        <div style={{ color: 'white', fontSize: '20px' }}>
+          <Image width={150} preview={false} src={logo} />
         </div>
       </Col>
       <Col>
-        <Menu theme="light" mode="horizontal" defaultSelectedKeys={['1']}>
+        <Menu mode="horizontal" defaultSelectedKeys={['1']}>
           <Menu.Item key="1" icon={<HomeOutlined />} onClick={()=>{navgate("/")}}>
             首頁
           </Menu.Item>

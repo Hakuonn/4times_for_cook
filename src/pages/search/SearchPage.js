@@ -6,6 +6,10 @@ import SearchResult from '../../components/search/SearchResult'; // 引入搜尋
 import { SearchOutlined } from '@ant-design/icons';
 import './SearchPage.css';
 import './SearchResultPage.css';
+import PlaceholderLoading from 'react-placeholder-loading'
+
+// 我這邊搜尋結果有用placehoder套件，要注意！！
+// https://www.npmjs.com/package/react-placeholder-loading
 
 function SearchPage() {
   const [inputValue, setInputValue] = useState('');
@@ -83,7 +87,7 @@ function SearchPage() {
         </div>
         
         {/* 顯示搜尋結果 */}
-        {showSearchResult && <SearchResult searchResults={searchResults}/>}
+        {showSearchResult ? <SearchResult searchResults={searchResults}/> : <PlaceholderLoading shape='rect'/>}
       </div>
     </div>
   );

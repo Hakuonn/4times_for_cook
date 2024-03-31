@@ -5,6 +5,7 @@
     height: 100vh;
     background-image: url('../../images/bg.png');
     background-size: cover;
+    background-attachment: fixed; /* 將背景圖片固定 */
   }
   
 .search-content {
@@ -12,6 +13,8 @@
   background-color: rgba(255, 255, 255, 0.8);
   padding: 20px;
   border-radius: 10px;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .tagName{
