@@ -50,6 +50,14 @@ function SearchPage() {
   const timeTags = ['15分鐘或更少', '30分鐘或更少', '60分鐘或更少', '60分鐘以上'];
   const cuisineTags = ['日式', '中式', '韓式', '西班牙', '義式', '德式', '墨西哥'];
   const healthTags = ['不含酒精', '低卡路里', '低蛋白', '高蛋白', '無麩質', '低鈉', '低膽固醇'];
+  const hotSearches = [
+    "有哪些以扁豆和菠菜為特色的菜餚？",
+    "您能推薦以菠菜和茄子為主要成分的餐點嗎？",
+    "您能建議一個以豆腐、花椰菜和甜椒為主要材料的素食食譜，並且能在25分鐘或更短的時間內烹飪完成嗎？",
+    "我該如何做一份美味的時令水果沙拉？",
+    "準備帶有檸檬和香草的烤鮭魚有什麼簡單的方法？",
+    "一些健康的午餐三明治餡料有哪些？"
+  ];
 
   return (
     <div className="search-container">
@@ -66,6 +74,15 @@ function SearchPage() {
         <div className="slogan">
           <p>選擇您想要的種類，讓我們幫你挑選您可能喜愛的料理~</p>
         </div>
+        <div className="hot-searches">
+          {hotSearches.map((search, index) => (
+            <div>
+              {index+1}. 
+              <span key={index} onClick={() => setInputValue(search)}>{search}</span>
+            </div>
+            ))}
+        </div>
+        <Divider/>
         <div className="conditions">
           <Row gutter={[16, 16]}>
             <Col span={8}>
