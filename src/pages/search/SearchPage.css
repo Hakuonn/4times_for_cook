@@ -1,11 +1,21 @@
+body {
+  background-image: url('../../images/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* 保持原始设置 */
+}
 .search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-image: url('../../images/bg.png');
-    background-size: cover;
-    background-attachment: fixed; /* 將背景圖片固定 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 95.2vh;
+  background-image: url('../../images/bg.png'); /* 背景圖片的路徑 */
+  background-size: cover; /* 讓背景圖片滿版填充容器 */
+  background-position: center; /* 將背景圖片置中 */
+  background-repeat: no-repeat; /* 防止重複顯示背景圖片 */
+  background-attachment: fixed; /* 將背景圖片固定在視窗中 */
   }
   
 .search-content {

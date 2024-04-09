@@ -3,6 +3,8 @@ import { Button, Col, Image, Row, Modal } from 'antd';
 import { UserOutlined, LoginOutlined, UserAddOutlined } from '@ant-design/icons';
 import './IndexPage.css';
 import logo_and_solgan_540 from '../../images/logo_and_slogan_540_white.png';
+import { Link } from 'react-router-dom';
+
 
 const IndexPage = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -32,14 +34,18 @@ const IndexPage = () => {
 
       <Row gutter={[16, 40]} justify="center">
         <Col xs={24} md={12}>
-          <Button type="primary" size='large' shape='round' icon={<LoginOutlined />} block>
-            登入
-          </Button>
+          <Link to="/">
+            <Button type="primary" size='large' shape='round' icon={<LoginOutlined />} block>
+              登入
+            </Button>
+          </Link>
         </Col>
         <Col xs={24} md={12}>
+        <Link to="/">
           <Button type="default" size='large' shape='round' icon={<UserAddOutlined />} block>
             註冊
           </Button>
+        </Link>
         </Col>
       </Row>
 
@@ -62,9 +68,11 @@ const IndexPage = () => {
         <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '8px', height: '300px', overflowY: 'auto' }}>
           {/* example */}
           {accounts.map(account => (
-            <Button key={account.id} type="default" size="large" block style={{ marginBottom: '12px' }}>
-              {account.name}
-            </Button>
+            <Link to="/">
+              <Button key={account.id} type="default" size="large" block style={{ marginBottom: '12px' }}>
+                {account.name}
+              </Button>
+            </Link>
           ))}
         </div>
       </Modal>
